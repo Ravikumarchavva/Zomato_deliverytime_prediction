@@ -1,1 +1,13 @@
 catboost_info
+
+# python gitignore
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyw
+*.pyz
+*.pywz
+
+# Jupyter Notebook gitignore
+.ipynb_checkpoints
