@@ -1,5 +1,5 @@
 import traceback
-from logger import CustomLogger  # Assumes CustomLogger is defined in logger.py
+from src.logger import CustomLogger  # Assumes CustomLogger is defined in logger.py
 import sys
 
 
