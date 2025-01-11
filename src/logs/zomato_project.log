@@ -1,0 +1,1 @@
+2025-01-11 23:52:36 - ERROR - Exception occurred in file: 'D:\github\Zomato\src\exception.py' at line: 51 - [ZeroDivisionError]: An error occurred in the Zomato project. | Original Exception: division by zero

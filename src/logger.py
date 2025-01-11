@@ -10,15 +10,40 @@ LOG_DIR = SRC_DIR / "logs"
 LOG_DIR.mkdir(exist_ok=True)  # Ensure the logs directory exists
 LOG_FILE = LOG_DIR / "zomato_project.log"
 
-# Configure the logger
+
 logging.basicConfig(
-    level=logging.DEBUG,  # Set to DEBUG for detailed logs; change to INFO in production
-    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
-    handlers=[
-        logging.FileHandler(LOG_FILE),
-        logging.StreamHandler()  # Log to console as well
-    ]
+    filename=LOG_FILE,
+    level=logging.ERROR,
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S"
 )
 
-# Create a logger instance
-logger = logging.getLogger("ZomatoProject")
+class CustomLogger:
+    @staticmethod
+    def log_exception(exception):
+        """
+        Logs an exception with details of file name, line number, and error message.
+        """
+        # Get exception details
+        exc_type, exc_value, exc_traceback = exception
+        error_details = {
+            "type": exc_type.__name__,
+            "message": str(exc_value),
+            "file": exc_traceback.tb_frame.f_code.co_filename,
+            "line": exc_traceback.tb_lineno,
+        }
+
+        # Log the error details
+        logging.error(
+            "Exception occurred in file: '%(file)s' at line: %(line)d - [%(type)s]: %(message)s",
+            error_details
+        )
+
+# Example usage in a project
+if __name__ == "__main__":
+    try:
+        # Intentionally raise an exception
+        1 / 0
+    except Exception:
+        CustomLogger.log_exception(sys.exc_info())
+        print("An error occurred. Check the log file for details.")
