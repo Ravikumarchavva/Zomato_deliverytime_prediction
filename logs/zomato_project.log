@@ -1,0 +1,3 @@
+NOT IGNORED FOR DEMO
+
+2025-01-12 00:04:09 - ERROR - Exception occurred in file: 'D:\github\Zomato\src\logger.py' at line: 44 - [ZeroDivisionError]: division by zero

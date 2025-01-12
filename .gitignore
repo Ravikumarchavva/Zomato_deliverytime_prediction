@@ -3,6 +3,11 @@ venv/
 
 
 
+!logs/
+!logs/**
+!notebooks/
+!notebooks/**
+
 
 
 
